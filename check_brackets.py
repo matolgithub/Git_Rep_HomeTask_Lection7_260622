@@ -8,18 +8,20 @@ class Brackets:
     def inp_string_brackets(self):
         while True:
             string_brackets = input("Please, input string with brackets for testing: ")
-            count_simbol = 0
+            count_other_simbol = 0
             for symbol in string_brackets:
                 if symbol not in self.brackets_collection:
-                    count_simbol += 1
-            if count_simbol == 0:
+                    count_other_simbol += 1
+            if count_other_simbol == 0:
                 break
-        return string_brackets
+        return list(string_brackets)
 
     def balance_check(self):
-        pass
+        stack_brackets = Brackets()
+        list_brackets = stack_brackets.inp_string_brackets()
+        stack = main.Stack(list_brackets).isEmpty()
+        print(stack)
 
 
 if __name__ == '__main__':
-    brakets = Brackets()
-    brakets.inp_string_brackets()
+    Brackets.balance_check(Brackets)
