@@ -1,7 +1,9 @@
 
 class Stack:
-    def __init__(self, brackets_collection):
-        self.brackets_collection = brackets_collection
+    def __init__(self, stack):
+        self.stack = list(stack)
+        # ( chr(40), ) chr(41), [ chr(91), ] chr(93), { chr(123), } chr(125)
+        self.brackets_collection = f'{chr(40)}{chr(41)}{chr(91)}{chr(93)}{chr(123)}{chr(125)}'
 
     def isEmpty(self):
         pass
@@ -15,8 +17,8 @@ class Stack:
     def peek(self):
         pass
 
-    def size(self, stack_list):
-        size_stack = len(stack_list)
+    def size(self):
+        size_stack = len(self.stack)
         return size_stack
 
     def inp_string_brackets(self):
@@ -36,8 +38,6 @@ class Stack:
 
 
 if __name__ == '__main__':
-    stack = Stack('()[]{}')
-    stack.inp_string_brackets()
-
-
-
+    stack = Stack('(({}))')
+    # stack.inp_string_brackets()
+    # stack.size()
