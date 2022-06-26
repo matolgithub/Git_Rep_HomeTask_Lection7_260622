@@ -20,10 +20,12 @@ class Stack:
                 break
 
     def pop(self):
-        pass
+        del_end_simbol = self.stack.pop(-1)
+        return del_end_simbol
 
     def peek(self):
-        pass
+        end_simbol = self.stack[-1]
+        return end_simbol
 
     def size(self):
         size_stack = len(self.stack)
@@ -51,3 +53,5 @@ if __name__ == '__main__':
     # stack.inp_string_brackets()
     # stack.size()
     # stack.push('{')
+    # stack.pop()
+    stack.peek()
