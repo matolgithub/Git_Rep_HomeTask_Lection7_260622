@@ -1,4 +1,4 @@
-import stack
+from stack import Stack
 
 class Brackets:
     def __init__(self):
@@ -17,13 +17,40 @@ class Brackets:
                         count_other_symbol += 1
                 if count_other_symbol == 0:
                     break
-        return list(string_brackets)
+        list_brackets = list(string_brackets)
+        return list_brackets
 
-    def balance_check(self):
+    def balance_check(self, result="Сбалансированно"):
         stack_brackets = Brackets()
         list_brackets = stack_brackets.inp_string_brackets()
-        stack_list = stack.Stack(list_brackets).isEmpty()
-        print(stack_list)
+        stack_object = Stack(list_brackets)
+        stack_list = stack_object.stack
+        while len(list_brackets) != 0:
+            try:
+                for symbol in list_brackets:
+                    if symbol == chr(40):
+                        list_brackets.remove(chr(41))
+                        list_brackets.remove(symbol)
+                    elif symbol == chr(91):
+                        list_brackets.remove(chr(93))
+                        list_brackets.remove(symbol)
+                    elif symbol == chr(123):
+                        list_brackets.remove(chr(125))
+                        list_brackets.remove(symbol)
+                    elif symbol == chr(41):
+                        list_brackets.remove(chr(40))
+                        list_brackets.remove(symbol)
+                    elif symbol == chr(93):
+                        list_brackets.remove(chr(91))
+                        list_brackets.remove(symbol)
+                    elif symbol == chr(125):
+                        list_brackets.remove(chr(123))
+                        list_brackets.remove(symbol)
+            except ValueError:
+                result = "Несбалансированно"
+                break
+        print(result)
+
 
 
 if __name__ == '__main__':
